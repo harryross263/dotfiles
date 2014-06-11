@@ -1,0 +1,19 @@
+# Often useful
+install git-ftp
+install hub
+install bfg
+install imagemagick
+install bup
+install ffmpeg
+install lftp
+install mobile-shell
+install rdiff-backup
+install nmap
+
+# Cask - often useful
+cask install hex-fiend
+cask install minecraft
+cask install gfxcardstatus
+cask install skype
+cask install qlstephen
+cask install github
