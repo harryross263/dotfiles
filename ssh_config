@@ -1,0 +1,10 @@
+PermitLocalCommand yes
+
+Host 192.168.1.175
+  user pi
+Host raspi
+  Hostname 192.168.1.175
+  user pi
+Host raspirt
+  Hostname redacted.example.com
+  user pi
