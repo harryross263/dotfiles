@@ -36,9 +36,9 @@ let php_htmlInStrings = 1   "Syntax highlight for HTML inside PHP strings
 let php_parent_error_open = 1 "Display error for unmatch brackets
 
 "Enable syntax highlighting
-if &t_Co > 1
-  syntax enable
-endif
+"if &t_Co > 1
+syntax enable
+"endif
 
 "When in split screen, map <C-LeftArrow> and <C-RightArrow> to switch panes.
 nn [5C <C-W>w
@@ -90,6 +90,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'eunuch.vim'
 Plugin 'node'
+"Plugin 'altercation/vim-colors-solarized'
+Plugin 'zenorocha/dracula-theme'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -98,6 +100,8 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Custom
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set t_Co=256
 
 "Disable arrow keys for movement in both insert and cmd mode
 "Good for learning hjkl
@@ -135,5 +139,19 @@ set undodir=~/.vim/undo//
 "Disable markdown folding
 let g:vim_markdown_folding_disabled=1
 
+"2 spaces in yaml and package.json
 autocmd Filetype yaml setlocal tabstop=2 expandtab shiftwidth=2
 autocmd BufNewFile,BufRead,BufWrite package.json setlocal tabstop=2 expandtab shiftwidth=2
+
+"Solarized
+"colorscheme solarized
+"let g:solarized_termcolors=16
+"let g:solarized_termtrans=1
+
+if has('gui_running')
+	set background=light
+else
+	set background=dark
+endif
+
+colorscheme default
