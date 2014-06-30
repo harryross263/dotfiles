@@ -148,6 +148,19 @@ let g:airline#extensions#whitespace#mixed_indent_algo=1 "Tabs before spaces
 
 autocmd VimEnter * AirlineTheme dark
 
+"Tmuxline
+"Future customization ideas: weather, IPs (public and private), ...?
+let g:tmuxline_preset = {
+	\'a'       : '#S:#I',
+	\'b disabled'       : '',
+	\'c disabled'       : '',
+	\'win'     : ['#I', '#W'],
+	\'cwin'    : ['#I', '#W'],
+	\'x disabled'       : '',
+	\'y'       : ['%a', '%Y-%m-%d', '%H:%M'],
+	\'z'       : ['#(whoami)', '#h'],
+	\'options' : {'status-justify': 'left'}}
+
 "Solarized
 "let &t_Co=256
 let g:solarized_termcolors=&t_Co
