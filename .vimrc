@@ -11,7 +11,7 @@ set fileformats=unix        "Use Unix line endings
 set smartindent             "Smart autoindenting on new line
 set smarttab                "Respect space/tab settings
 set history=300             "Number of commands to remember
-set showmode                "Show whether in Visual, Replace, or Insert Mode
+set noshowmode              "Don't show mode (because of airline)
 set showmatch               "Show matching brackets/parentheses
 set backspace=2             "Use standard backspace behavior
 set hlsearch                "Highlight matches in search
@@ -61,11 +61,18 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
-" Josh - plugins
+"Plugins
 Plugin 'plasticboy/vim-markdown'
-Plugin 'eunuch.vim'
-Plugin 'node'
-"Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-scripts/eunuch.vim'
+Plugin 'vim-scripts/node'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'edkolev/promptline.vim'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'chrisbra/NrrwRgn'
+
+"Color schemes
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'zenorocha/dracula-theme'
 
 " All of your Plugins must be added before the following line
@@ -75,7 +82,7 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Other custom
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set t_Co=256
+"set t_Co=256
 
 "Disable arrow keys for movement in both insert and cmd mode
 "Good for learning hjkl
@@ -123,4 +130,25 @@ else
 	set background=dark
 endif
 
-colorscheme default
+"colorscheme default
+
+"""""""""""""""
+"Plugin config"
+"""""""""""""""
+
+"Airline
+let g:airline_powerline_fonts=1
+set laststatus=2
+let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#branch#empty_message='no repo'
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#whitespace#enabled=1
+let g:airline#extensions#whitespace#mixed_indent_algo=1 "Tabs before spaces
+
+autocmd VimEnter * AirlineTheme dark
+
+"Solarized
+"let &t_Co=256
+let g:solarized_termcolors=&t_Co
+let g:solarized_termtrans=1      "Transparent background, correct bg color
+colorscheme solarized
