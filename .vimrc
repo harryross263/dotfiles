@@ -130,7 +130,8 @@ else
 	set background=dark
 endif
 
-"colorscheme default
+"K in help opens help for under the cursor
+autocmd FileType help setlocal keywordprg=:help
 
 """""""""""""""
 "Plugin config"
