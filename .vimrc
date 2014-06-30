@@ -161,6 +161,13 @@ let g:tmuxline_preset = {
 	\'z'       : ['#(whoami)', '#h'],
 	\'options' : {'status-justify': 'left'}}
 
+"Promptline
+let g:promptline_preset = {
+	\'a': [ promptline#slices#host(), promptline#slices#user() ],
+	\'b': [ promptline#slices#cwd() ],
+	\'z': [ promptline#slices#vcs_branch(), promptline#slices#jobs() ],
+	\'warn': [ promptline#slices#battery(), promptline#slices#last_exit_code() ]}
+
 "Solarized
 "let &t_Co=256
 let g:solarized_termcolors=&t_Co

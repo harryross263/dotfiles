@@ -90,3 +90,6 @@ bind "set completion-ignore-case on"
 
 # ensure ssh-agent is available
 #eval $(ssh-agent)
+
+# promptline
+test -f ~/.dotfiles/.promptline.sh && source ~/.dotfiles/.promptline.sh
