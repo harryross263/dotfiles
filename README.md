@@ -1,11 +1,11 @@
 dotfiles
 ========
-This is a selection of my dotfiles. This was shoddily thrown together before doing a clean install of the OS X Yosemite beta.
+This is a selection of my dotfiles. I personally clone this repo into `~/.dotfiles`, then symlink things into `~`.
 
-This is not all-encompassing, or well done. It is very user-specific.
+This contains some personal preferences but is not linked to a particular computer.
 
 ## Warnings
-Do *not* install Brewfile.complete; it is a list of everything I had installed with homebrew previously. It should not all be reinstalled. See Brewfile and Brewfile.alt.
+Do *not* install Brewfile.complete; it is a list of everything I had installed with homebrew on my old harddrive. It should not all be reinstalled. See Brewfile and Brewfile.alt.
 
 Brewfile and Brewfile.alt are intended for the `brew bundle` command.
 
