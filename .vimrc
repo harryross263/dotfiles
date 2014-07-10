@@ -12,7 +12,7 @@ set smartindent             "Smart autoindenting on new line
 set smarttab                "Respect space/tab settings
 set history=300             "Number of commands to remember
 set noshowmode              "Don't show mode (because of airline)
-set showmatch               "Show matching brackets/parentheses
+set noshowmatch             "Don't show matching brackets/parentheses
 set backspace=2             "Use standard backspace behavior
 set hlsearch                "Highlight matches in search
 set ruler                   "Show line and column number
@@ -23,6 +23,7 @@ syntax on
 set autoindent              "Auto indent based on previous line
 let php_htmlInStrings = 1   "Syntax highlight for HTML inside PHP strings
 let php_parent_error_open = 1 "Display error for unmatch brackets
+let loaded_matchparen = 1   "Force the bracket matcher to not load - very slow in objc
 
 "When in split screen, map <C-LeftArrow> and <C-RightArrow> to switch panes.
 nn [5C <C-W>w
