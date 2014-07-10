@@ -133,6 +133,8 @@ endif
 "K in help opens help for under the cursor
 autocmd FileType help setlocal keywordprg=:help
 
+autocmd FileType netrw AirlineRefresh
+
 """""""""""""""
 "Plugin config"
 """""""""""""""
