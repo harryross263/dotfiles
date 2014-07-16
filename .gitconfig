@@ -57,3 +57,5 @@
     default = current
 [hub]
     protocol = https
+[url "https://"]
+	insteadOf = git://
