@@ -176,3 +176,9 @@ let g:promptline_preset = {
 let g:solarized_termcolors=&t_Co
 let g:solarized_termtrans=1      "Transparent background, correct bg color
 colorscheme solarized
+
+"""""""""""""""
+"Abbreviations"
+"""""""""""""""
+"Holding shift while ending a CSS comment
+ab *? */
