@@ -160,7 +160,7 @@ let g:tmuxline_preset = {
 	\'win'     : ['#I', '#W'],
 	\'cwin'    : ['#I', '#W'],
 	\'x disabled'       : '',
-	\'y'       : ['%a', '%Y-%m-%d', '%H:%M'],
+	\'y'       : ['%a', '%Y-%m-%d', '%l:%M%p'],
 	\'z'       : ['#(whoami)', '#h'],
 	\'options' : {'status-justify': 'left'}}
 
