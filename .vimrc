@@ -153,6 +153,10 @@ autocmd VimEnter * AirlineTheme dark
 
 "Tmuxline
 "Future customization ideas: weather, IPs (public and private), ...?
+"IP's: When 192.168.1.151 is an IP and there is an alternate (DHCP interface),
+"  show the DCHP addr
+"  When .1.151 is the only, show the public IP
+"  When not .1.151 locally, show the private IP
 let g:tmuxline_preset = {
 	\'a'       : '#S:#I',
 	\'b disabled'       : '',
