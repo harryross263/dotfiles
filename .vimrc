@@ -71,6 +71,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'edkolev/promptline.vim'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'chrisbra/NrrwRgn'
+Plugin 'vim-scripts/argtextobj.vim'
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
