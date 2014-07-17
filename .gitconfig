@@ -46,15 +46,16 @@
     clean = git-media-clean %f
     smudge = git-media-smudge %f
 
-[url "https://JoshTheGeek@github.com/"]
-  insteadOf = "gh://"
-  pushInsteadOf = "gh://"
-[url "https://JoshTheGeek@github.com/JoshTheGeek/"]
-  insteadOf = "ghj://"
-  pushInsteadOf = "ghj://"
+[url "git@github.com:"]
+    insteadOf = "gh://"
+    pushInsteadOf = "https://github.com/"
+    pushInsteadOf = "gh://"
+[url "git@github.com:JoshTheGeek/"]
+    insteadOf = "ghj://"
+    pushInsteadOf = "ghj://"
+[url "https://"]
+	insteadOf = git://
 [push]
     default = current
 [hub]
     protocol = https
-[url "https://"]
-	insteadOf = git://
