@@ -169,12 +169,25 @@ let g:tmuxline_preset = {
 	\'z'       : ['#(whoami)', '#h'],
 	\'options' : {'status-justify': 'left'}}
 
-"Promptline
+"Promptline - :PromptlineSnapshot! ~/.dotfiles/.promptline.sh airline
+"These functions disable the host and user when in tmux, as they are shown in
+"  the bottom right corner of the window
+fun! Joshthegeek_promptline_host(...)
+	" host is \h in bash, %m in zsh
+	return '$([[ -n ${TMUX-} ]] && exit 1; [[ -n ${ZSH_VERSION-} ]] && print %m || printf "%s" \\h)'
+endfun
+
+fun! Joshthegeek_promptline_user(...)
+	" user is \u in bash, %n in zsh
+	return '$([[ -n ${TMUX-} ]] && exit 1; [[ -n ${ZSH_VERSION-} ]] && print %n || printf "%s" \\u)'
+endfun
+
 let g:promptline_preset = {
-	\'a': [ promptline#slices#host(), promptline#slices#user() ],
-	\'b': [ promptline#slices#cwd() ],
+	\'a': [ Joshthegeek_promptline_host(), Joshthegeek_promptline_user() ],
+	\'b': [ promptline#slices#cwd({ 'dir_limit': 2 }) ],
 	\'z': [ promptline#slices#vcs_branch(), promptline#slices#jobs() ],
 	\'warn': [ promptline#slices#battery(), promptline#slices#last_exit_code() ]}
+let g:promptline_theme = 'airline'
 
 "Solarized
 "let &t_Co=256
