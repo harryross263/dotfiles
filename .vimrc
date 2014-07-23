@@ -25,6 +25,13 @@ let php_htmlInStrings = 1   "Syntax highlight for HTML inside PHP strings
 let php_parent_error_open = 1 "Display error for unmatch brackets
 let loaded_matchparen = 1   "Force the bracket matcher to not load - very slow in objc
 
+"Code folding
+"http://smartic.us/2009/04/06/code-folding-in-vim/
+set foldmethod=indent   "Fold based on indent
+set foldnestmax=10      "Deepest fold is 10 levels
+set nofoldenable        "Don't fold by default
+set foldlevel=1         "This is just what I use
+
 "When in split screen, map <C-LeftArrow> and <C-RightArrow> to switch panes.
 nn [5C <C-W>w
 nn [5R <C-W>W
