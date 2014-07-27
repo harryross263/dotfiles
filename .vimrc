@@ -79,6 +79,7 @@ Plugin 'edkolev/promptline.vim'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'chrisbra/NrrwRgn'
 Plugin 'vim-scripts/argtextobj.vim'
+Plugin 'tpope/vim-surround'
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
