@@ -160,7 +160,7 @@ let g:airline#extensions#whitespace#mixed_indent_algo=1 "Tabs before spaces
 
 autocmd VimEnter * AirlineTheme dark
 
-"Tmuxline
+"Tmuxline - :TmuxlineSnapshot! ~/.dotfiles/.tmuxline.tmux.conf
 "Future customization ideas: weather, IPs (public and private), ...?
 "IP's: When 192.168.1.151 is an IP and there is an alternate (DHCP interface),
 "  show the DCHP addr
@@ -174,7 +174,7 @@ let g:tmuxline_preset = {
 	\'cwin'    : ['#I', '#W'],
 	\'x disabled'       : '',
 	\'y'       : ['%a', '%Y-%m-%d', '%l:%M%p'],
-	\'z'       : ['#(whoami)', '#h'],
+	\'z'       : ['#(whoami)', '#(~/.dotfiles/getipfortmux)'],
 	\'options' : {'status-justify': 'left'}}
 
 "Promptline - :PromptlineSnapshot! ~/.dotfiles/.promptline.sh airline
