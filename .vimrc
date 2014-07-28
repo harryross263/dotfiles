@@ -161,11 +161,7 @@ let g:airline#extensions#whitespace#mixed_indent_algo=1 "Tabs before spaces
 autocmd VimEnter * AirlineTheme dark
 
 "Tmuxline - :TmuxlineSnapshot! ~/.dotfiles/.tmuxline.tmux.conf
-"Future customization ideas: weather, IPs (public and private), ...?
-"IP's: When 192.168.1.151 is an IP and there is an alternate (DHCP interface),
-"  show the DCHP addr
-"  When .1.151 is the only, show the public IP
-"  When not .1.151 locally, show the private IP
+"Far bottom right shows DHCP WiFi IP, with an H appended at home
 let g:tmuxline_preset = {
 	\'a'       : '#S:#I',
 	\'b disabled'       : '',
