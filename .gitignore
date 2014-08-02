@@ -1,1 +1,3 @@
 /tmuxomatic/
+.battery.plist
+!bin/**/node_modules

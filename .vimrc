@@ -168,9 +168,9 @@ let g:tmuxline_preset = {
 	\'c disabled'       : '',
 	\'win'     : ['#I', '#W'],
 	\'cwin'    : ['#I', '#W'],
-	\'x disabled'       : '',
+	\'x'       : '#(~/.dotfiles/bin/tmux-battery/bin/tmux-battery.js)',
 	\'y'       : ['%a', '%Y-%m-%d', '%l:%M%p'],
-	\'z'       : ['#(whoami)', '#(~/.dotfiles/getipfortmux)'],
+	\'z'       : ['#(whoami)', '#(~/.dotfiles/bin/getipfortmux)'],
 	\'options' : {'status-justify': 'left'}}
 
 "Promptline - :PromptlineSnapshot! ~/.dotfiles/.promptline.sh airline
