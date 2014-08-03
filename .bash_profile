@@ -1,5 +1,6 @@
 # alias ssbg='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background'
 #export PATH=/usr/local/bin:$PATH # /usr/local/bin is already in the PATH
+export PATH=~/bin:$PATH
 # alias rot13='~/bash/rot13.bash'
 # alias manGrowlNotify='man /usr/local/man/man1/growlnotify.1'
 alias ..='cd ..'
