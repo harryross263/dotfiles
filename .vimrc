@@ -170,7 +170,7 @@ let g:tmuxline_preset = {
 	\'cwin'    : ['#I', '#W'],
 	\'x'       : '#(~/.dotfiles/bin/tmux-battery/bin/tmux-battery.js)',
 	\'y'       : ['%a', '%Y-%m-%d', '%l:%M%p'],
-	\'z'       : ['#(whoami)', '#(~/.dotfiles/bin/getipfortmux)'],
+	\'z'       : ['#(whoami)', '#(~/.dotfiles/bin/getipfortmux || echo raspi)'],
 	\'options' : {'status-justify': 'left'}}
 
 "Promptline - :PromptlineSnapshot! ~/.dotfiles/.promptline.sh airline
