@@ -70,6 +70,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 "Plugins
+Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'vim-scripts/eunuch.vim'
 Plugin 'vim-scripts/node'
