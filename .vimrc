@@ -169,7 +169,7 @@ let g:tmuxline_preset = {
 	\'c disabled'       : '',
 	\'win'     : ['#I', '#W'],
 	\'cwin'    : ['#I', '#W'],
-	\'x'       : '#(~/.dotfiles/bin/tmux-battery/bin/tmux-battery.js)',
+	\'x'       : '#(~/.dotfiles/bin/tmux-battery)',
 	\'y'       : ['%a', '%Y-%m-%d', '%l:%M%p'],
 	\'z'       : ['#(whoami)', '#(~/.dotfiles/bin/getipfortmux || echo raspi)'],
 	\'options' : {'status-justify': 'left'}}
