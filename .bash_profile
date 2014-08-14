@@ -12,7 +12,7 @@ alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias realias="$EDITOR ~/.bash_profile; . ~/.bash_profile"
 alias ralias='. ~/.bash_profile'
 alias mou='open -a Mou'
-alias git='hub'
+alias git='gh'
 
 function gi() { curl http://www.gitignore.io/api/$@ ;}
 
