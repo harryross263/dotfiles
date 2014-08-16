@@ -37,7 +37,8 @@ nn [5C <C-W>w
 nn [5R <C-W>W
 
 "Drupal PHP filetypes
-augroup module
+augroup drupal
+	au!
 	autocmd BufRead,BufNewFile *.module set filetype=php
 	autocmd BufRead,BufNewFile *.php set filetype=php
 	autocmd BufRead,BufNewFile *.install set filetype=php
@@ -45,12 +46,6 @@ augroup module
 	autocmd BufRead,BufNewFile *.profile set filetype=php
 	autocmd BufRead,BufNewFile *.theme set filetype=php
 augroup END
-
-"Uncomment the following to have Vim jump to the last position when reopening
-if has("autocmd")
- au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
- \| exe "normal! g'\"" | endif
-endif
 
 "Highlight long comments and trailing whitespace.
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -132,8 +127,11 @@ set undodir=~/.vim/undo//
 let g:vim_markdown_folding_disabled=1
 
 "2 spaces in yaml and package.json
-autocmd Filetype yaml setlocal tabstop=2 expandtab shiftwidth=2
-autocmd BufNewFile,BufRead,BufWrite package.json setlocal tabstop=2 expandtab shiftwidth=2
+augroup yaml
+	autocmd!
+	autocmd Filetype yaml setlocal tabstop=2 expandtab shiftwidth=2
+	autocmd BufNewFile,BufRead,BufWrite package.json setlocal tabstop=2 expandtab shiftwidth=2
+augroup END
 
 if has('gui_running')
 	set background=light
@@ -141,10 +139,22 @@ else
 	set background=dark
 endif
 
-"K in help opens help for under the cursor
-autocmd FileType help setlocal keywordprg=:help
+augroup joshmisc
+	autocmd!
 
-autocmd FileType netrw AirlineRefresh
+	"K in help opens help for under the cursor
+	autocmd FileType help setlocal keywordprg=:help
+
+	autocmd FileType netrw AirlineRefresh
+
+	"Jump to previous position when opening, except commit messages and
+	"invalid positions
+	"https://github.com/thoughtbot/dotfiles/blob/876f375ce70c6723b33ead4fff77b829dee70bee/vimrc#L34-L40
+	autocmd BufReadPost *
+				\ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+				\   exe "normal g`\"" |
+				\ endif
+augroup end
 
 """""""""""""""
 "Plugin config"
@@ -159,7 +169,10 @@ let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#whitespace#enabled=1
 let g:airline#extensions#whitespace#mixed_indent_algo=1 "Tabs before spaces
 
-autocmd VimEnter * AirlineTheme dark
+aug airlinethemejosh
+	autocmd!
+	autocmd VimEnter * AirlineTheme dark
+aug end
 
 "Tmuxline - :TmuxlineSnapshot! ~/.dotfiles/.tmuxline.tmux.conf
 "Far bottom right shows DHCP WiFi IP, with an H appended at home
