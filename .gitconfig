@@ -1,61 +1,63 @@
 [user]
-    name = Josh Oldenburg
-    email = joshthegeek@me.com
+	name = Josh Oldenburg
+	email = joshthegeek@me.com
 [alias]
-    co = checkout
-    cob = checkout -b
-    st = status
-    ci = commit
-    br = branch
-    tg = tag
-    rb = rebase
-    cfg = config
-    up = pull
-    pu = push
-    cl = clone
-    rt = remote
-    dfnp = !git diff --no-prefix && git diff --staged --no-prefix
-    dfs = !git diff && git diff --staged
-    df = diff
-    dfs = diff --cached
-    clear = reset --hard HEAD
-    graph = log --oneline --graph --all --abbrev-commit --decorate=short
-    gr = log --oneline --graph --all --abbrev-commit --decorate=short
-    grc = !git gr --max-count
-    gr5 = !git grc 5
-    gr10 = !git grc 10
-    cicount = rev-list HEAD --count
-    cicount-yesterday = "!git whatchanged --since=\"1 day ago\" --pretty=oneline --abbrev-commit | grep -e '^[^:]'"
-    push-tags = "!git push; git push --tags"
+	co = checkout
+	cob = checkout -b
+	st = status
+	ci = commit
+	br = branch
+	tg = tag
+	rb = rebase
+	cfg = config
+	up = pull
+	pu = push
+	cl = clone
+	rt = remote
+	dfnp = !git diff --no-prefix && git diff --staged --no-prefix
+	dfs = !git diff && git diff --staged
+	df = diff
+	dfs = diff --cached
+	clear = reset --hard HEAD
+	graph = log --oneline --graph --all --abbrev-commit --decorate=short
+	gr = log --oneline --graph --all --abbrev-commit --decorate=short
+	grc = !git gr --max-count
+	gr5 = !git grc 5
+	gr10 = !git grc 10
+	cicount = rev-list HEAD --count
+	cicount-yesterday = "!git whatchanged --since=\"1 day ago\" --pretty=oneline --abbrev-commit | grep -e '^[^:]'"
+	push-tags = "!git push; git push --tags"
+	amend = commit --amend
+	amenda = commit --amend -a -C HEAD
 [color]
-    ui = auto
-    status = auto
-    diff = auto
-    remote = auto
+	ui = auto
+	status = auto
+	diff = auto
+	remote = auto
 [core]
-    excludesfile = /Users/josh/.gitignore
-    autocrlf = input
-    eol = lf
+	excludesfile = /Users/josh/.gitignore
+	autocrlf = input
+	eol = lf
 [difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path =
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
 [mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 [filter "media"]
-    clean = git-media-clean %f
-    smudge = git-media-smudge %f
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
 
 [url "git@github.com:"]
-    insteadOf = "gh://"
-    pushInsteadOf = "https://github.com/"
-    pushInsteadOf = "gh://"
+	insteadOf = "gh://"
+	pushInsteadOf = "https://github.com/"
+	pushInsteadOf = "gh://"
 [url "git@github.com:JoshTheGeek/"]
-    insteadOf = "ghj://"
-    pushInsteadOf = "ghj://"
+	insteadOf = "ghj://"
+	pushInsteadOf = "ghj://"
 [url "https://"]
 	insteadOf = git://
 [push]
-    default = current
+	default = current
 [hub]
-    protocol = https
+	protocol = https
