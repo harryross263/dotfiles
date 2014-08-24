@@ -71,7 +71,8 @@ alias tattach='tmux attach -t'
 # alias backupThumb='echo JOSHO3; rdiff-backup /Volumes/JOSHO3 /Volumes/Misc/thumbdrivebups/rdiff/JOSHO3'
 
 # bup
-export BUP_DIR=/Volumes/Misc/bup
+#export BUP_DIR=/Volumes/Misc/bup
+export BUP_DIR=/Volumes/Shared/People/Josh/ThumbDrives/bup
 alias backupThumb='echo JOSHO3; bup index /Volumes/JOSHO3 && bup save -n JOSHO3 /Volumes/JOSHO3/'
 
 # brew completion
