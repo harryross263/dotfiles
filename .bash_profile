@@ -78,8 +78,8 @@ alias tattach='tmux attach -t'
 export BUP_DIR=/Volumes/Shared/People/Josh/ThumbDrives/bup
 alias backupThumb='echo JOSHO3; bup index /Volumes/JOSHO3 && bup save -n JOSHO3 /Volumes/JOSHO3/'
 
-# brew completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
+# brew completion (test command exists for RPi/others)
+if [ hash brew 2>/dev/null && -f $(brew --prefix)/etc/bash_completion ]; then
 	. $(brew --prefix)/etc/bash_completion
 fi
 
