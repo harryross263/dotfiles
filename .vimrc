@@ -80,6 +80,8 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-commentary'
+Plugin 'Keithbsmiley/swift.vim'
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
