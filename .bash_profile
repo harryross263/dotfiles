@@ -16,7 +16,7 @@ alias mou='open -a Mou'
 # Rename the tmux window according to the new directory.
 function cd() { builtin cd "$@"; (tmux rename-window $(~/.dotfiles/bin/dirabbrev) >/dev/null 2>&1;) }
 
-if !hash brew 2>/dev/null; then
+if ! hash brew 2>/dev/null; then
 	alias git='git'
 elif hash gh 2>/dev/null; then
 	alias git='gh'
