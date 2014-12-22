@@ -79,7 +79,8 @@ export BUP_DIR=/Volumes/Shared/People/Josh/ThumbDrives/bup
 alias backupThumb='echo JOSHO3; bup index /Volumes/JOSHO3 && bup save -n JOSHO3 /Volumes/JOSHO3/'
 
 # brew completion (test command exists for RPi/others)
-if [ hash brew 2>/dev/null && -f $(brew --prefix)/etc/bash_completion ]; then
+# -f tests for regular file, it is a symlink on OS X, so -e
+if hash brew 2>/dev/null && [ -e $(brew --prefix)/etc/bash_completion ]; then
 	. $(brew --prefix)/etc/bash_completion
 fi
 
