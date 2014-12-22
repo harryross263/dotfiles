@@ -103,4 +103,4 @@ bind "set completion-ignore-case on"
 #eval $(ssh-agent)
 
 # promptline
-test -f ~/.dotfiles/.promptline.sh && source ~/.dotfiles/.promptline.sh
+test -f ~/.dotfiles/.promptline.sh && hash brew 2>/dev/null && source ~/.dotfiles/.promptline.sh
