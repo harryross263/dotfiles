@@ -1,6 +1,6 @@
 # alias ssbg='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background'
 #export PATH=/usr/local/bin:$PATH # /usr/local/bin is already in the PATH
-export PATH=~/bin:$PATH:/usr/texbin
+#export PATH=~/bin:$PATH:/usr/texbin # See pathadd() below
 # alias rot13='~/bash/rot13.bash'
 # alias manGrowlNotify='man /usr/local/man/man1/growlnotify.1'
 alias ..='cd ..'
@@ -16,6 +16,13 @@ alias mou='open -a Mou'
 # Rename the tmux window according to the new directory.
 function cd() { builtin cd "$@"; (tmux rename-window $(~/.dotfiles/bin/dirabbrev) >/dev/null 2>&1;) }
 
+# Add an item to $PATH without duplicating it
+pathadd() { if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then PATH="${PATH:+"$PATH:"}$1"; fi }
+
+pathadd ~/bin
+pathadd /usr/texbin
+
+# RPi? Raw git. Have gh (new version of hub)? Use gh. Have hub? Use hub. Otherwise, use raw git.
 if ! hash brew 2>/dev/null; then
 	alias git='git'
 elif hash gh 2>/dev/null; then
@@ -24,7 +31,7 @@ elif hash hub 2>/dev/null; then
 	alias git='hub'
 fi
 
-function gi() { curl http://www.gitignore.io/api/$@ ;}
+function gitignore() { curl http://www.gitignore.io/api/$@ ;}
 
 # iTerm 2 only
 # growl() { echo -e $'\e]9;'${1}'\007' ; return  ; }
@@ -80,7 +87,7 @@ alias tattach='tmux attach -t'
 export BUP_DIR=/Volumes/Shared/People/Josh/ThumbDrives/bup
 alias backupThumb='echo JOSHO3; bup index /Volumes/JOSHO3 && bup save -n JOSHO3 /Volumes/JOSHO3/'
 
-# brew completion (test command exists for RPi/others)
+# brew completion (don't try without homebrew installed)
 # -f tests for regular file, it is a symlink on OS X, so -e
 if hash brew 2>/dev/null && [ -e $(brew --prefix)/etc/bash_completion ]; then
 	. $(brew --prefix)/etc/bash_completion
@@ -104,5 +111,5 @@ bind "set completion-ignore-case on"
 # ensure ssh-agent is available
 #eval $(ssh-agent)
 
-# promptline
+# promptline (only on OS X with homebrew present)
 test -f ~/.dotfiles/.promptline.sh && hash brew 2>/dev/null && source ~/.dotfiles/.promptline.sh
