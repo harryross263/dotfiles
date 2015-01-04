@@ -14,7 +14,9 @@ alias ralias='. ~/.bash_profile'
 alias mou='open -a Mou'
 
 # Rename the tmux window according to the new directory.
-function cd() { builtin cd "$@"; (tmux rename-window $(~/.dotfiles/bin/dirabbrev) >/dev/null 2>&1;) }
+if [ $(uname -m) == 'armv6l' ]; then JO_DIRABBREV=~/.dotfiles/bin/dirabbrev-rpi
+else JO_DIRABBREV=~/.dotfiles/bin/dirabbrev; fi
+function cd() { builtin cd "$@"; (tmux rename-window $($JO_DIRABBREV) >/dev/null 2>&1;) }
 
 # Add an item to $PATH without duplicating it
 pathadd() { if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then PATH="${PATH:+"$PATH:"}$1"; fi }
