@@ -38,6 +38,7 @@
 	excludesfile = /Users/josh/.gitignore
 	autocrlf = input
 	eol = lf
+	editor = vim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
