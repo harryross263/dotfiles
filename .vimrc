@@ -224,3 +224,9 @@ colorscheme solarized
 """""""""""""""
 "Holding shift while ending a CSS comment
 ab *? */
+
+""""""""""
+"Commands"
+""""""""""
+command AirlineHide set laststatus=0
+command AirlineShow set laststatus=2
