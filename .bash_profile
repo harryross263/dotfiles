@@ -12,6 +12,7 @@ alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias realias="$EDITOR ~/.bash_profile; . ~/.bash_profile"
 alias ralias='. ~/.bash_profile'
 alias mou='open -a Mou'
+alias pdflatex='pdflatex -halt-on-error'
 
 # Rename the tmux window according to the new directory.
 if [ $(uname -m) == 'armv6l' ]; then JO_DIRABBREV=~/.dotfiles/bin/dirabbrev-rpi
