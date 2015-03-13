@@ -53,6 +53,14 @@ let a = matchadd('ExtraWhitespace', '\s\+$')
 highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
 let b = matchadd('OverLength', '\(^\(\s\)\{-}\(*\|//\|/\*\)\{1}\(.\)*\(\%81v\)\)\@<=\(.\)\{1,}$')
 
+if has('win32')
+	source $VIMRUNTIME/vimrc_example.vim
+	source $VIMRUNTIME/mswin.vim
+	behave mswin
+endif
+
+set guifont=Lucida\ Console,Courier\ New
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -60,14 +68,22 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if has('win32')
+	set rtp+=$VIMRUNTIME/../vimfiles/bundle/Vundle.vim
+	let path=$VIMRUNTIME.'/../vimfiles/bundle'
+	call vundle#begin(path)
+else
+	set rtp+=~/.vim/bundle/Vundle.vim
+	call vundle#begin()
+endif
 Plugin 'gmarik/Vundle.vim'
 
 "Plugins
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'vim-scripts/eunuch.vim'
+if !has('win32')
+	Plugin 'tpope/vim-eunuch'
+endif
 Plugin 'vim-scripts/node'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
@@ -82,6 +98,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-commentary'
 Plugin 'Keithbsmiley/swift.vim'
+Plugin 'vim-scripts/nxc.vim'
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
@@ -160,6 +177,9 @@ augroup joshmisc
 				\ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
 				\   exe "normal g`\"" |
 				\ endif
+
+	autocmd BufRead,BufNewFile *.nxc set filetype=nxc
+
 augroup end
 
 """""""""""""""
@@ -167,7 +187,9 @@ augroup end
 """""""""""""""
 
 "Airline
-let g:airline_powerline_fonts=1
+if !has('gui_running') && !has('win32')
+	let g:airline_powerline_fonts=1
+endif
 set laststatus=2
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#branch#empty_message='no repo'
