@@ -87,7 +87,7 @@ alias tattach='tmux attach -t'
 
 # bup
 #export BUP_DIR=/Volumes/Misc/bup
-export BUP_DIR=/Volumes/Shared/People/Josh/ThumbDrives/bup
+export BUP_DIR=/Volumes/Shared/People/Josh/ThumbDrives/bup2
 alias backupThumb='echo JOSHO3; bup index /Volumes/JOSHO3 && bup save -n JOSHO3 /Volumes/JOSHO3/'
 
 # brew completion (don't try without homebrew installed)
