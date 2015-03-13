@@ -10,8 +10,8 @@ Host raspi
 Host raspirt
   Hostname redacted.example.com
   user pi
-  LocalForward 5548 192.168.1.160:548
+#  LocalForward 5548 192.168.1.160:548
 
-Host github.com
-  Hostname ssh.github.com
-  Port 443
+#Host github.com
+#  Hostname ssh.github.com
+#  Port 443
