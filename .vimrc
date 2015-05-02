@@ -255,6 +255,13 @@ ab *? */
 command AirlineHide set laststatus=0
 command AirlineShow set laststatus=2
 
+"""""""""""""""""
+"Command Aliases"
+"""""""""""""""""
+"https://stackoverflow.com/questions/3878692/aliasing-a-command-in-vim
+cnoreabbrev Q q
+cnoreabbrev W w
+
 """"""""""
 "Lilypond"
 """"""""""
