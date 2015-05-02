@@ -99,6 +99,7 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-commentary'
 Plugin 'Keithbsmiley/swift.vim'
 Plugin 'vim-scripts/nxc.vim'
+Plugin 'vim-scripts/vim-coffee-script'
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
