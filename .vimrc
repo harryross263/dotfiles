@@ -211,7 +211,7 @@ let g:tmuxline_preset = {
 	\'c disabled'       : '',
 	\'win'     : ['#I', '#W'],
 	\'cwin'    : ['#I', '#W'],
-	\'x'       : '#(~/.dotfiles/bin/tmux-battery)',
+	\'x disabled'       : '#(~/.dotfiles/bin/tmux-battery)',
 	\'y'       : ['%a', '%Y-%m-%d', '%l:%M%p'],
 	\'z'       : ['#(whoami)', '#(~/.dotfiles/bin/getipfortmux || echo raspi)'],
 	\'options' : {'status-justify': 'left'}}
@@ -233,7 +233,8 @@ let g:promptline_preset = {
 	\'a': [ Joshthegeek_promptline_host(), Joshthegeek_promptline_user() ],
 	\'b': [ promptline#slices#cwd({ 'dir_limit': 2 }) ],
 	\'z': [ promptline#slices#vcs_branch(), promptline#slices#jobs() ],
-	\'warn': [ promptline#slices#battery(), promptline#slices#last_exit_code() ]}
+	\'warn': [ promptline#slices#last_exit_code() ]}
+	"\'warn': [ promptline#slices#battery(), promptline#slices#last_exit_code() ]}
 let g:promptline_theme = 'airline'
 
 "Solarized
