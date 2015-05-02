@@ -254,3 +254,11 @@ ab *? */
 """"""""""
 command AirlineHide set laststatus=0
 command AirlineShow set laststatus=2
+
+""""""""""
+"Lilypond"
+""""""""""
+filetype off
+set runtimepath+=/Applications/LilyPond.app/Contents/Resources/share/lilypond/current/vim/
+filetype on
+"syntax on
