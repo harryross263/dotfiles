@@ -183,6 +183,9 @@ augroup joshmisc
 
 augroup end
 
+"Use the system clipboard
+set clipboard=unnamed
+
 """""""""""""""
 "Plugin config"
 """""""""""""""
