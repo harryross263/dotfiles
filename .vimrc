@@ -100,6 +100,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'Keithbsmiley/swift.vim'
 Plugin 'vim-scripts/nxc.vim'
 Plugin 'vim-scripts/vim-coffee-script'
+Plugin 'benmills/vimux'
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
@@ -271,3 +272,17 @@ filetype off
 set runtimepath+=/Applications/LilyPond.app/Contents/Resources/share/lilypond/current/vim/
 filetype on
 "syntax on
+
+""""""""
+"Leader"
+""""""""
+let mapleader = " "
+
+map <Leader>rt :call VimuxRunCommand("pdflatex -halt-on-error " . bufname("%"))<CR>
+map <Leader>rl :call VimuxRunCommand("/Applications/LilyPond.app/Contents/Resources/bin/lilypond " . bufname("%"))<CR>
+map <Leader>r<space> :VimuxPromptCommand<CR>
+map <Leader>rr :VimuxRunLastCommand<CR>
+map <Leader>rz :VimuxZoomRunner<CR>
+
+map <Leader>w :w
+map <Leader>wq :wq
