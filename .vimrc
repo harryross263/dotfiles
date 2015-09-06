@@ -287,6 +287,7 @@ let mapleader = " "
 
 map <Leader>rt :call VimuxRunCommand("pdflatex -halt-on-error " . bufname("%"))<CR>
 map <Leader>rl :call VimuxRunCommand("/Applications/LilyPond.app/Contents/Resources/bin/lilypond " . bufname("%"))<CR>
+map <Leader>rn :call VimuxRunCommand("node " . bufname("%"))<CR>
 map <Leader>r<space> :VimuxPromptCommand<CR>
 map <Leader>rr :VimuxRunLastCommand<CR>
 map <Leader>rz :VimuxZoomRunner<CR>
