@@ -291,5 +291,9 @@ map <Leader>r<space> :VimuxPromptCommand<CR>
 map <Leader>rr :VimuxRunLastCommand<CR>
 map <Leader>rz :VimuxZoomRunner<CR>
 
-map <Leader>w :w
-map <Leader>wq :wq
+"The wq and qall mappings are nice, but introduce a delay because they are
+"ambiguous.
+map <Leader>w :w<CR>
+"map <Leader>wq :wq<CR>
+map <Leader>q :q<CR>
+"map <Leader>qall :qall<CR>
