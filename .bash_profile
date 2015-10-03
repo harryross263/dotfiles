@@ -24,6 +24,7 @@ pathadd() { if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then PATH="${PATH:+"$
 
 pathadd ~/bin
 pathadd /usr/texbin
+pathadd /Library/usr/texbin
 
 # RPi? Raw git. Have gh (new version of hub)? Use gh. Have hub? Use hub. Otherwise, use raw git.
 if ! hash brew 2>/dev/null; then
