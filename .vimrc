@@ -298,3 +298,5 @@ map <Leader>w :w<CR>
 "map <Leader>wq :wq<CR>
 map <Leader>q :q<CR>
 "map <Leader>qall :qall<CR>
+
+map <Leader>nh :noh<CR>
