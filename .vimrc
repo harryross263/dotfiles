@@ -24,6 +24,7 @@ set autoindent              "Auto indent based on previous line
 let php_htmlInStrings = 1   "Syntax highlight for HTML inside PHP strings
 let php_parent_error_open = 1 "Display error for unmatch brackets
 let loaded_matchparen = 1   "Force the bracket matcher to not load - very slow in objc
+set mouse=a
 
 "Code folding
 "http://smartic.us/2009/04/06/code-folding-in-vim/
