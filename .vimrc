@@ -54,10 +54,14 @@ let a = matchadd('ExtraWhitespace', '\s\+$')
 highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
 let b = matchadd('OverLength', '\(^\(\s\)\{-}\(*\|//\|/\*\)\{1}\(.\)*\(\%81v\)\)\@<=\(.\)\{1,}$')
 
+"if has('win32')
+"	source $VIMRUNTIME/vimrc_example.vim
+"	source $VIMRUNTIME/mswin.vim
+"	behave mswin
+"endif
 if has('win32')
-	source $VIMRUNTIME/vimrc_example.vim
-	source $VIMRUNTIME/mswin.vim
-	behave mswin
+	let $CMDER_ROOT = $VIM . '\..\cmder'
+	let $PATH .= ';'.$CMDER_ROOT.'\bin;'.$CMDER_ROOT.'\vendor\msysgit\bin;'.$CMDER_ROOT.'\vendor\msysgit\mingw\bin;'.$CMDER_ROOT.'\vendor\msysgit\cmd'
 endif
 
 set guifont=Lucida\ Console,Courier\ New
@@ -147,9 +151,15 @@ set scrolloff=5   "Keep five lines above and below the cursor
 "augroup END
 
 "Write backup files globally, but keep them unique
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
+if has('win32')
+	set backupdir=$VIM/vimfiles/backup//
+	set directory=$VIM/vimfiles/swap//
+	set undodir=$VIM/vimfiles/undo//
+else
+	set backupdir=~/.vim/backup//
+	set directory=~/.vim/swap//
+	set undodir=~/.vim/undo//
+endif
 
 "Disable markdown folding
 let g:vim_markdown_folding_disabled=1
