@@ -164,6 +164,9 @@ endif
 "Disable markdown folding
 let g:vim_markdown_folding_disabled=1
 
+"Spell check in Markdown files
+autocmd FileType markdown setlocal spell
+
 "2 spaces in yaml and package.json
 augroup yaml
 	autocmd!
