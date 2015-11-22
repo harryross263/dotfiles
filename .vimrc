@@ -318,6 +318,8 @@ function! RunCurrentFile()
 		let command = "node " . bufname("%")
 	elseif &filetype ==? "latex"
 		let command = "pdflatex -halt-on-error " . bufname("%")
+	elseif &filetype ==? "tex"
+		let command = "pdflatex -halt-on-error " . bufname("%")
 	elseif &filetype ==? "lilypond"
 		let command = "/Applications/LilyPond.app/Contents/Resources/bin/lilypond " . bufname(%)
 	else
