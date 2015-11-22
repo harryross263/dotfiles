@@ -307,6 +307,10 @@ map <Leader>ra :VimuxRunLastCommand<CR>
 map <Leader>rr :Run<CR>
 map <Leader>rz :VimuxZoomRunner<CR>
 
+"Create new line without entering insert mode
+map <Leader>o o<ESC>
+map <Leader>O O<ESC>
+
 "https://github.com/martin-svk/dot-files/blob/master/neovim/autoload/utils.vim#L56-L69
 command! Run :call RunCurrentFile()
 function! RunCurrentFile()
