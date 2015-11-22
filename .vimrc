@@ -303,8 +303,27 @@ map <Leader>rt :call VimuxRunCommand("pdflatex -halt-on-error " . bufname("%"))<
 map <Leader>rl :call VimuxRunCommand("/Applications/LilyPond.app/Contents/Resources/bin/lilypond " . bufname("%"))<CR>
 map <Leader>rn :call VimuxRunCommand("node " . bufname("%"))<CR>
 map <Leader>r<space> :VimuxPromptCommand<CR>
-map <Leader>rr :VimuxRunLastCommand<CR>
+map <Leader>ra :VimuxRunLastCommand<CR>
+map <Leader>rr :Run<CR>
 map <Leader>rz :VimuxZoomRunner<CR>
+
+"https://github.com/martin-svk/dot-files/blob/master/neovim/autoload/utils.vim#L56-L69
+command! Run :call RunCurrentFile()
+function! RunCurrentFile()
+	if &filetype ==? "javascript"
+		let command = "node " . bufname("%")
+	elseif &filetype ==? "latex"
+		let command = "pdflatex -halt-on-error " . bufname("%")
+	elseif &filetype ==? "lilypond"
+		let command = "/Applications/LilyPond.app/Contents/Resources/bin/lilypond " . bufname(%)
+	else
+		echom "Can't run current file (unsupported filetype: " . &filetype .")"
+	endif
+
+	if exists('command')
+		call VimuxRunCommand(command)
+	endif
+endfunction
 
 "The wq and qall mappings are nice, but introduce a delay because they are
 "ambiguous.
