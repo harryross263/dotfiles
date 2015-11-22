@@ -337,3 +337,6 @@ map <Leader>q :q<CR>
 "map <Leader>qall :qall<CR>
 
 map <Leader>nh :noh<CR>
+
+map <Leader>e :e |"Trailing space intentional
+map <Leader>b :b|"Lack of trailing space intentional
