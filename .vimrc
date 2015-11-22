@@ -111,7 +111,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'zenorocha/dracula-theme'
+"Plugin 'zenorocha/dracula-theme'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
