@@ -26,13 +26,13 @@ pathadd ~/bin
 pathadd /usr/texbin
 pathadd /Library/usr/texbin
 
-# RPi? Raw git. Have gh (new version of hub)? Use gh. Have hub? Use hub. Otherwise, use raw git.
+# RPi? Raw git. Have hub (new version of gh)? Use hub Have gh? Use gh. Otherwise, use raw git.
 if ! hash brew 2>/dev/null; then
 	alias git='git'
-elif hash gh 2>/dev/null; then
-	alias git='gh'
 elif hash hub 2>/dev/null; then
 	alias git='hub'
+elif hash gh 2>/dev/null; then
+	alias git='gh'
 fi
 
 function gitignore() { curl http://www.gitignore.io/api/$@ ;}
