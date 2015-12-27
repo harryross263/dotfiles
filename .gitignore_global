@@ -71,3 +71,8 @@ node_modules/
 # Bower #
 #########
 #bower_components/
+
+# SSH #
+#######
+id_rsa
+id_dsa
