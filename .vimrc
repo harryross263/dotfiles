@@ -108,6 +108,7 @@ Plugin 'vim-scripts/nxc.vim'
 Plugin 'vim-scripts/vim-coffee-script'
 Plugin 'benmills/vimux'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'vim-scripts/icalendar.vim'
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
@@ -288,6 +289,11 @@ filetype off
 set runtimepath+=/Applications/LilyPond.app/Contents/Resources/share/lilypond/current/vim/
 filetype on
 "syntax on
+
+"""""
+"ICS"
+"""""
+autocmd! BufRead,BufNewFile *.ics setfiletype icalendar
 
 """"""""""""""""
 "tmux-navigator"
