@@ -348,3 +348,5 @@ map <Leader>nh :noh<CR>
 
 map <Leader>e :e |"Trailing space intentional
 map <Leader>b :b|"Lack of trailing space intentional
+
+autocmd BufRead,BufNewFile /Volumes/* setlocal viminfo=
