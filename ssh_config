@@ -1,4 +1,5 @@
 PermitLocalCommand yes
+UseRoaming no
 
 Host 192.168.1.175
 #  RemoteForward 52698 127.0.0.1:52698
