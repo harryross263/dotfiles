@@ -327,7 +327,7 @@ function! RunCurrentFile()
 	elseif &filetype ==? "tex"
 		let command = "pdflatex -halt-on-error " . bufname("%")
 	elseif &filetype ==? "lilypond"
-		let command = "/Applications/LilyPond.app/Contents/Resources/bin/lilypond " . bufname(%)
+		let command = "/Applications/LilyPond.app/Contents/Resources/bin/lilypond " . bufname("%")
 	else
 		echom "Can't run current file (unsupported filetype: " . &filetype .")"
 	endif
