@@ -190,8 +190,9 @@ endif
 augroup joshmisc
 	autocmd!
 
-	"K in help opens help for under the cursor
+	"K in help or vimrc opens help for under the cursor
 	autocmd FileType help setlocal keywordprg=:help
+	autocmd FileType vim setlocal keywordprg=:help
 
 	autocmd FileType netrw AirlineRefresh
 
