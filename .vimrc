@@ -109,6 +109,7 @@ Plugin 'vim-scripts/vim-coffee-script'
 Plugin 'benmills/vimux'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'vim-scripts/icalendar.vim'
+Plugin 'wesQ3/vim-windowswap'
 
 "Color schemes
 Plugin 'altercation/vim-colors-solarized'
