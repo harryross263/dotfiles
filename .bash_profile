@@ -17,7 +17,12 @@ alias pdflatex='pdflatex -halt-on-error'
 # Rename the tmux window according to the new directory.
 if [ $(uname -m) == 'armv6l' ]; then JO_DIRABBREV=~/.dotfiles/bin/dirabbrev-rpi
 else JO_DIRABBREV=~/.dotfiles/bin/dirabbrev; fi
-function cd() { builtin cd "$@"; (tmux rename-window $($JO_DIRABBREV) >/dev/null 2>&1;) }
+function cd() {
+	builtin cd "$@"
+	if [ "x$TMUX" != "x" ]; then
+		tmux rename-window $($JO_DIRABBREV) >/dev/null 2>&1
+	fi
+}
 
 # Add an item to $PATH without duplicating it
 pathadd() { if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then PATH="${PATH:+"$PATH:"}$1"; fi }
@@ -120,3 +125,7 @@ bind "set completion-ignore-case on"
 
 # promptline (only on OS X with homebrew present)
 test -f ~/.dotfiles/.promptline.sh && hash brew 2>/dev/null && source ~/.dotfiles/.promptline.sh
+
+if [ "x$TMUX" != "x" ]; then
+	tmux rename-window $($JO_DIRABBREV) >/dev/null 2>&1
+fi
