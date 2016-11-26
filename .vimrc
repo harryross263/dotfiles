@@ -176,6 +176,11 @@ augroup yaml
 	autocmd BufNewFile,BufRead,BufWrite package.json setlocal tabstop=2 expandtab shiftwidth=2
 augroup END
 
+augroup java
+	autocmd!
+	autocmd Filetype java setlocal tabstop=4 expandtab shiftwidth=4
+augroup END
+
 if has('gui_running')
 	set background=light
 else
@@ -309,6 +314,7 @@ let mapleader = " "
 map <Leader>rt :call VimuxRunCommand("pdflatex -halt-on-error " . bufname("%"))<CR>
 map <Leader>rl :call VimuxRunCommand("/Applications/LilyPond.app/Contents/Resources/bin/lilypond " . bufname("%"))<CR>
 map <Leader>rn :call VimuxRunCommand("node " . bufname("%"))<CR>
+map <Leader>rj :call VimuxRunCommand("javac " . bufname("%") . " && java " . expand("%:r"))<CR>
 map <Leader>r<space> :VimuxPromptCommand<CR>
 map <Leader>ra :VimuxRunLastCommand<CR>
 map <Leader>rr :Run<CR>
@@ -329,6 +335,8 @@ function! RunCurrentFile()
 		let command = "pdflatex -halt-on-error " . bufname("%")
 	elseif &filetype ==? "lilypond"
 		let command = "/Applications/LilyPond.app/Contents/Resources/bin/lilypond " . bufname("%")
+	elseif &filetype ==? "java"
+		let command = "javac " . bufname("%") . " && java " . expand("%:r")
 	else
 		echom "Can't run current file (unsupported filetype: " . &filetype .")"
 	endif
