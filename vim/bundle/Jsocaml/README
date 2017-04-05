@@ -1,0 +1,70 @@
+Two features are offered for JaneStreeters:
+
+- Support for jenga/omake output in the quickfix window (when jenga and omake are polling)
+- Support for interactive code review in vim
+
+1. Suppor for jenga/omake
+
+  Instead of calling your usual:
+
+    jomake ...
+
+  Call
+    ~/.vim/bundle/Jsocaml/bin/vim-omake ...
+
+  Open an ml file anywhere in the tree being compiled. To load the errors that jenga/omake
+  has generated, run 
+
+  :Jomake
+
+  When you write files, the vim-omake + omake_filter.native program will cleanup the
+  output of jenga/omake. Just run Jomake again to get new errors. I tend to use this 
+  with a jem.exe running in the repository, which will show me when compilation has
+  finished at which point I can address all errors in the tree very quickly. Note that 
+  waiting for jenga/omake to finish is not required. You can reload errors at any time.
+
+2. Support for CR
+
+To start a code review, instead of doing:
+
+cr review ....
+
+just add the -vim flag and make sure you are at the root of the repo or subrepo:
+
+cr review -vim <filename> ....
+
+That's it. Here is what you get:
+
+  :Crnext
+    Go to the next file to review
+  :Crprev
+    Go to the previous file to review
+  :Crack
+    Acknowledge the changes and remove the file from the list of files
+    to review
+  :Crload "filename"
+    Load the list of files to review in the <filename>. Useful to
+    continue a previous review, or simply to edit the order of the
+    files to review, and start with the new configuration.
+
+There are other Cr... commands, but I find them less useful. Explore
+them if you want! I'll fix them if broken.
+
+For your vimrc configuration:
+
+  let g:Crlayout = "horizontal"
+   or
+  let g:Crlayout = "vertical"
+
+What do these commands do?
+
+Cr(next | prev | ack) will close all buffers in the vimsession and
+open three windows for the file to review as follows:
+
+  - A window with the old version
+  - A window with the new version
+  - A window with the current file in the repository
+
+  The first two will be in diff mode, while the third will be just the
+source code. The layout of the three windows varies depending on the
+g:Crlayout variable.

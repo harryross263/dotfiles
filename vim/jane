@@ -1,0 +1,12 @@
+" vim: ft=vim
+
+let $PATH .= ':' . '/j/office/app/ocp-indent/prod/bin'
+let $OCP_INDENT_CONFIG = 'JaneStreet'
+
+" Pull the deployed merlin configuration
+source /j/office/app/merlin/all-offices/vim-alpha/source-me.vim
+
+" Vim Fedit.  Set to v for vsplit and h for split.
+if !exists("g:fedit_split_type")
+  let g:fedit_split_type = "h"
+endif

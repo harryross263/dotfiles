@@ -1,0 +1,39 @@
+set nocompatible
+
+if !exists("g:experimental")
+  let g:experimental=0
+endif
+
+if filereadable(glob("~/.vim-local-settings")) 
+  source ~/.vim-local-settings
+endif
+
+source ~/.vim/bundles
+source ~/.vim/general
+source ~/.vim/default_remaps
+source ~/.vim/plugin_options
+source ~/.vim/auto_commands
+source ~/.vim/helper_functions
+
+if isdirectory("/j/office")
+  source ~/.vim/jane
+endif
+
+" add overrides to the files above to the overrides file
+if filereadable(glob("~/.vim/overrides"))
+  source ~/.vim/overrides
+endif
+" ~/.vimrc for harry@sb
+call pathogen#infect()
+call pathogen#helptags()
+
+" Used to detect mac environment for certain config variables.
+" Usage: 'if s:uname == "Linux"
+let s:uname = substitute(system("uname"), '\n', '', '')
+
+" Map <C-L> (redraw screen) to also turn off search highlighting until the
+" next search
+nnoremap <C-L> :nohl<CR><C-L>
+ 
+" Use ,b to build the current md file to pdf using pandoc.
+map ,b :w<CR>:Silent pandoc <C-r>=expand("%")<CR> -o <C-r>=expand("%:r") . ".pdf"<CR> --include-in-header ~/.md-preamble.tex --template=md-template.latex<CR>

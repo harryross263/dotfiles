@@ -1,0 +1,66 @@
+" vim: ft=vim
+
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#begin()
+
+" core
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'gmarik/vundle'
+Plugin 'kana/vim-altr'
+Plugin 'tpope/vim-surround'
+Plugin 'phleet/vim-mercenary'
+Plugin 'tpope/vim-repeat'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'godlygeek/tabular'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'sjl/gundo.vim'
+Plugin 'ConradIrwin/vim-bracketed-paste'
+Plugin 'bling/vim-airline'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'arpeggio'
+Plugin 'ervandew/supertab'
+Plugin 'kana/vim-textobj-user'
+Plugin 'vim-dispatch'
+Plugin 'AndrewRadev/linediff.vim'
+Plugin 'fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'edkolev/promptline.vim'
+Plugin 'edkolev/tmuxline.vim'
+
+" mode specific
+Plugin 'Jsocaml'
+" Plugin 'Markdown'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'def-lkb/ocp-indent-vim'
+Plugin 'simonjbeaumont/vim-ocamlspot'
+Plugin 'VOoM'
+Plugin 'bgrundmann/mkdtodo'
+Plugin 'JuliaEditorSupport/julia-vim'
+
+"Makes colors better in 256-color terminals
+if g:experimental 
+  " idamron 2016-08-11
+  Plugin 'godlygeek/csapprox'
+endif
+
+" bufmru is very old (2009ish), and there's a newer revision from around the
+" same time that removes a bunch of features.  pinned prevents Vundle from
+" updating it
+Plugin 'bufmru.vim', {'pinned': 1}
+
+" colorschemes
+Plugin 'Solarized'
+Plugin 'Inkpot'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'chriskempson/base16-vim'
+Plugin 'AnsiEsc'
+
+call vundle#end()
+
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif

@@ -1,0 +1,149 @@
+" vim: ft=vim
+
+" load arpeggio, so we have access to chords for mapping
+call arpeggio#load()
+
+" ' is easier to get to than `
+nnoremap ' `
+nnoremap ` '
+
+" , is a way easier leader than \
+let maplocalleader = ",,"
+let mapleader = ","
+
+" buffer swapping
+call arpeggio#map("n", "", 1, "mw", "<SNR>bufmru")
+call arpeggio#map("n", "", 1, "nm", "<SNR>bufmru")
+
+" fuzzy file finding
+call arpeggio#map("n", "", 0, "ht", "<esc>:FzfJane<cr>")
+call arpeggio#map("n", "", 0, "jk", "<esc>:FzfJane<cr>")
+
+" alternate file jumping
+call arpeggio#map("n", "", 0, "eu", ":call altr#forward()<cr>")
+call arpeggio#map("n", "", 0, "er", ":call altr#forward()<cr>")
+
+" F key mappings
+
+" <F2> to bring up a local directory listing based on the filename in the
+" current buffer.  Rest of the code makes it highlight the file you were in.
+map <F2> :let g:f2_filename=expand("%:t")<CR>:e %:h<CR>10j:call search('^\V' . g:f2_filename, 'c')<CR>
+
+
+" <F4> toggle paste
+set pastetoggle=<F4>
+
+" <F5> to bring up the undo window
+nnoremap <F5> :GundoToggle<CR>
+
+" <F8> toggle spelling mode
+nmap <F8> :setlocal invspell spelllang=en_us<CR>
+
+" <F12> unhighlight search
+map <F12> :nohlsearch<CR>
+
+" map ;qj to reformat the current paragraph
+call arpeggio#map("n", "", 0, ";qj", ":normal gqip<cr>")
+
+" map <leader>s to popup spelling suggestions
+map <leader>s z=
+
+" map <leader>= and <leader>- to perform the most common alignments
+nnoremap <leader>- :Tabularize /-><cr>
+nnoremap <leader>; :Tabularize /^[^:]*\zs:<cr>
+nnoremap <leader>= :Tabularize /^[^=]*\zs=<cr>
+vnoremap <leader>- :Tabularize /-><cr>
+vnoremap <leader>; :Tabularize /^[^:]*\zs:<cr>
+vnoremap <leader>= :Tabularize /^[^=]*\zs=<cr>
+
+" map <leader>(p|n) to move forward and back in the jump list
+nnoremap <leader>p <C-o>
+nnoremap <leader>n <C-n>
+
+" map < and > to repeated shifting in visual mode
+vnoremap < <gv
+vnoremap > >gv
+vnoremap <Left> <gv
+vnoremap <Right> >gv
+
+" map _ and - to beginning and end of the line
+nnoremap _ ^
+onoremap _ ^
+nnoremap - $
+onoremap - $
+
+" map Z to ZZ to make saving and quiting that much faster
+nnoremap Z ZZ
+
+" delete the current word in insert mode
+inoremap <C-w> <esc>diwi
+
+" tab movement as in web browsers
+map    <C-N>       :tabnext<cr>
+map    <C-P>       :tabprev<cr>
+
+" tab movement with arrows
+nnoremap <S-Left>  :tabp<CR>
+nnoremap <S-Right> :tabn<CR>
+
+" shift arrow keys to move around windows
+map    <S-Up>      <esc><C-w><Up>
+map    <S-Down>    <esc><C-w><Down>
+imap   <S-Up>      <esc><C-w><Up>
+imap   <S-Down>    <esc><C-w><Down>
+
+" use vim-ocamlspot for type spotting
+nnoremap <localleader>t :call OCamlType()<CR>
+
+" copy and paste from/to x clipboard
+vmap <leader>c :w !xclip<CR><CR>
+nmap <leader>c :w !xclip<CR><CR>
+vmap <leader>v :r !xclip -o<CR>
+nmap <leader>v :r !xclip -o<CR>
+
+" lookup keyword is almost never used, invert J instead 
+nnoremap K i<CR><Esc>
+
+" make Y behave like C or D
+nnoremap Y y$
+
+" enter is useless in normal mode, saving is awesome
+" Except that some buffers cannot be saved AND have enter
+" bound to something really useful (quickfix buffer for example)
+" So only save if saving is a useful action otherwise use
+" previous mapping if any
+nnoremap <expr> <cr> &buftype=="" ? ":w<cr>" : "<cr>"
+
+" space is also useless in normal mode, : is awesome
+nnoremap <space> :
+vnoremap <space> :
+
+" ex-mode is weird, remap Q
+nnoremap Q q
+
+" helpful remap for a normal slip of the fingers in dvorak
+nnoremap q: :q
+
+" Maps - to _, and vice versa, along with some helpers for writing ocaml
+function! MapDash()
+  :inoremap - _
+  :inoremap _ -
+  :inoreabb _. ->
+  :inoreabb _> ->
+  :inoreabb -. ->
+  :inoreabb <_ <-
+  :inoreabb ..= >>=
+endfunction
+
+function! UnmapDash()
+  :iunmap -
+  :iunmap _
+  :iunabb _.
+  :iunabb _>
+  :iunabb -.
+  :iunabb <_
+  :iunabb ..=
+endfunction
+
+:command! MapDash :call MapDash()
+:command! UnmapDash :call UnmapDash()

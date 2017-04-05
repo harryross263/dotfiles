@@ -1,0 +1,35 @@
+#!/bin/bash
+
+vim_target_file=".build_for_vim.aux"
+
+find_hgroot () {
+  hgroot=`pwd`
+  next_potential_root="${hgroot}"
+
+  while hg root --cwd "${next_potential_root}" &> /dev/null
+  do
+    hgroot=`hg root --cwd "${next_potential_root}"`
+    next_potential_root="${hgroot}/.."
+  done
+}
+
+case $1 in
+  --print-hgroot)
+    find_hgroot
+    echo -n ${hgroot}
+    exit 0
+    ;;
+  --print-vim-target-file)
+    find_hgroot
+    echo -n ${hgroot}/${vim_target_file}
+    exit 0
+    ;;
+  --print-ocaml-path)
+    find_hgroot
+    cat ${hgroot}/.omake-ocaml-bin
+    exit 0
+    ;;
+esac
+
+find_hgroot
+jomake -P --progress $* 2>&1 | $HOME/.vim/bundle/Jsocaml/bin/omake_filter.native $hgroot/${vim_target_file} $hgroot

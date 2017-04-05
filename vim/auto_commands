@@ -1,0 +1,11 @@
+" reload .vimrc when we make changes
+augroup vimrc
+  autocmd!
+  autocmd bufwritepost .vimrc source $MYVIMRC
+  autocmd bufwritepost */.vim/* source $MYVIMRC 
+augroup END
+
+augroup tex
+  autocmd!
+  autocmd bufwritepost *.tex mktex <C-r>=expand("%")<CR> <C-r>=expand("%:r") . ".aux"<CR>
+augroup END

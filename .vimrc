@@ -37,32 +37,11 @@ set foldlevel=1         "This is just what I use
 nn [5C <C-W>w
 nn [5R <C-W>W
 
-"Drupal PHP filetypes
-augroup drupal
-	au!
-	autocmd BufRead,BufNewFile *.module set filetype=php
-	autocmd BufRead,BufNewFile *.php set filetype=php
-	autocmd BufRead,BufNewFile *.install set filetype=php
-	autocmd BufRead,BufNewFile *.inc set filetype=php
-	autocmd BufRead,BufNewFile *.profile set filetype=php
-	autocmd BufRead,BufNewFile *.theme set filetype=php
-augroup END
-
 "Highlight long comments and trailing whitespace.
 highlight ExtraWhitespace ctermbg=red guibg=red
 let a = matchadd('ExtraWhitespace', '\s\+$')
 highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
 let b = matchadd('OverLength', '\(^\(\s\)\{-}\(*\|//\|/\*\)\{1}\(.\)*\(\%81v\)\)\@<=\(.\)\{1,}$')
-
-"if has('win32')
-"	source $VIMRUNTIME/vimrc_example.vim
-"	source $VIMRUNTIME/mswin.vim
-"	behave mswin
-"endif
-if has('win32')
-	let $CMDER_ROOT = $VIM . '\..\cmder'
-	let $PATH .= ';'.$CMDER_ROOT.'\bin;'.$CMDER_ROOT.'\vendor\msysgit\bin;'.$CMDER_ROOT.'\vendor\msysgit\mingw\bin;'.$CMDER_ROOT.'\vendor\msysgit\cmd'
-endif
 
 set guifont=Lucida\ Console,Courier\ New
 

@@ -1,0 +1,17 @@
+#!/bin/bash
+executable=$(/j/office/app/merlin/all-offices/builds/latest/jmerlin --exe $(~/.vim/bundle/Jsocaml/bin/vim-omake --print-hg-root))
+case $1 in
+  --bindir)
+    dirname ${executable} | tr -d '\n'
+    exit 0
+    ;;
+  --sharedir)
+    sharedir=$(dirname $(dirname ${executable}))
+    echo -n "${sharedir}/share/ocamlmerlin" | tr -d '\n'
+    exit 0
+    ;;
+  *)
+    echo "Expected --bindir or --sharedir"
+    exit 1
+    ;;
+esac

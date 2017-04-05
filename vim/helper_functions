@@ -1,0 +1,24 @@
+" vim: ft=vim
+
+" Calling this function toggles highlighting the thousands places to make it
+" easier to read large numbers
+function! Thousands()
+  :if exists("w:thousands") && w:thousands
+    :match none
+    :let w:thousands=0
+  :else
+    :hi MyThousands guifg=#BBBBFF ctermfg=6
+    :match MyThousands /\d\?\d\?\d\ze\d\d\d\(\d\d\d\d\d\d\)\{0,10\}\([^0-9]\|$\)/
+    :let w:thousands=1
+  :endif
+endfunction
+
+" Highlight thousands places to make it easier to read large numbers
+:map <leader>mm :call Thousands()<CR>
+
+function! TransposeCsv_line_by_line(sep)
+ :exec '%!read -r -s head; while read -r -s line; do echo "----"; cat <(echo "$head") <(echo "$line") | csv transpose -sep ' . "'" . a:sep . "' | cat <(echo 'X" . a:sep . "Y') - | csv pretty -sh -d '" . a:sep . "'; done"
+endfun
+:command! -range -nargs=? TransposeCsv :normal gg"lyy<line1>ggV<line2>gg"Ly:botright new<CR>:setl bt=nofile bh=hide nobl noswapfile<CR>ggVG"lp:call TransposeCsv_line_by_line('<args>' == '' ? ',' : '<args>')<CR>
+
+

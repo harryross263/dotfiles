@@ -1,6 +1,6 @@
 [user]
-	name = Josh Oldenburg
-	email = joshthegeek@me.com
+	name = Harry Ross
+	email = harryross263@gmail.com
 [alias]
 	co = checkout
 	cob = checkout -b
@@ -35,7 +35,7 @@
 	diff = auto
 	remote = auto
 [core]
-	excludesfile = /Users/josh/.gitignore
+	excludesfile = /Users/harryross/.gitignore
 	autocrlf = input
 	eol = lf
 	editor = vim

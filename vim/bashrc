@@ -1,0 +1,59 @@
+# Useful bash mappings for vim users
+
+settmuxwindowname() {
+  if [[ -n "$TMUX" ]]; then
+    printf '\033k'$1'\033\\'
+  fi
+}
+
+fr() {
+  settmuxwindowname "rev$1"
+  cdf "$1" && fe review "$1" 
+}
+
+frc() {
+  settmuxwindowname "rev$1"
+  fe catch-up review "$1"
+}
+
+fvim() {
+  if [[ $# > 0 ]]; then
+    cdf "$1"
+    settmuxwindowname "$1"
+  fi
+
+  vim -c :Fesummary
+}
+
+_fr_completion()
+{
+    local cur prev opts base
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    COMPREPLY=()
+    COMPREPLY=( $( fe todo -review-names | fgrep "$cur" ) )
+
+    return 0
+}
+complete -F _fr_completion fr
+
+_frc_completion()
+{
+    local cur prev opts base
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    COMPREPLY=()
+    COMPREPLY=( $( fe todo -catch-up-names | fgrep "$cur" ) )
+
+    return 0
+}
+complete -F _frc_completion frc
+
+_fvim_completion()
+{
+    local cur prev opts base
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    COMPREPLY=()
+    COMPREPLY=( $( ( fe todo -crs-and-review-names; fe todo -catch-up-names ; fe todo -owned-by-me-names -include-all-owned-features; fe todo -releasable-names; fe todo -unclean-workspaces-names; fe todo -watched-by-me-names ) | fgrep "$cur") )
+
+    return 0
+}
+complete -F _fvim_completion fvim

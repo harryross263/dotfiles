@@ -1,0 +1,125 @@
+" vim: ft=vim
+
+" vim-airline
+if !has('gui_running') && !has('win32')
+	let g:airline_powerline_fonts=1
+endif
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#branch#empty_message='no repo'
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#whitespace#enabled=1
+let g:airline#extensions#whitespace#mixed_indent_algo=1 "Tabs before spaces
+
+"Tmuxline - :TmuxlineSnapshot! ~/.dotfiles/.tmuxline.tmux.conf
+"Far bottom right shows DHCP WiFi IP, with an H appended at home
+let g:tmuxline_preset = {
+	\'a'       : '#S:#I',
+	\'b disabled'       : '',
+	\'c disabled'       : '',
+	\'win'     : ['#I', '#W'],
+	\'cwin'    : ['#I', '#W'],
+	\'x'       : '#(~/.dotfiles/bin/tmux-battery)',
+	\'y'       : ['%a', '%Y-%m-%d', '%l:%M%p'],
+	\'z'       : ['#(whoami)', '#(~/.dotfiles/bin/getipfortmux || echo raspi)'],
+	\'options' : {'status-justify': 'left'}}
+
+"Promptline - :PromptlineSnapshot! ~/.dotfiles/.promptline.sh airline
+"These functions disable the host and user when in tmux, as they are shown in
+"  the bottom right corner of the window
+fun! Joshthegeek_promptline_host(...)
+	" host is \h in bash, %m in zsh
+	return '$([[ -n ${TMUX-} ]] && exit 1; [[ -n ${ZSH_VERSION-} ]] && print %m || printf "%s" \\h)'
+endfun
+
+fun! Joshthegeek_promptline_user(...)
+	" user is \u in bash, %n in zsh
+	return '$([[ -n ${TMUX-} ]] && exit 1; [[ -n ${ZSH_VERSION-} ]] && print %n || printf "%s" \\u)'
+endfun
+
+let g:promptline_preset = {
+	\'a': [ Joshthegeek_promptline_host(), Joshthegeek_promptline_user() ],
+	\'b': [ promptline#slices#cwd({ 'dir_limit': 2 }) ],
+	\'z': [ promptline#slices#vcs_branch(), promptline#slices#jobs() ],
+	\'warn': [ promptline#slices#battery(), promptline#slices#last_exit_code() ]}
+let promptline_theme = 'airline'
+
+"let g:promptline_powerline_symbols = 0
+"let g:promptline_symbols = {
+"      \ 'left'           : '',
+"      \ 'right'          : '',
+"      \ 'left_alt'       : '>',
+"      \ 'right_alt'      : '<',
+"      \ 'dir_sep'        : ' / ',
+"      \ 'truncation'     : '...',
+"      \ 'vcs_branch'     : '',
+"      \ 'battery'        : '',
+"      \ 'space'          : ' '}
+
+
+" move bufmru command off of space
+let g:bufmru_switchkey = "<SNR>bufmru"
+
+" fzf.vim options
+let g:fzf_command_prefix = 'Fzf'
+let g:fzf_layout = { 'down': '~40%' }
+
+"Fix fzf for gvim (g:fzf_launcher is only used when running in gvim)
+let g:fzf_launcher = 'urxvt -fn "xft:Bitstream Vera Sans Mono:pixelsize=18" -title FZF +sb -bg black -fg lightgray -geometry 120x30 -e bash -ic %s'
+" This opens in a floating window in xmonad, but it's kinda hacky and I liked the urxvt version better:
+" let g:fzf_launcher = 'gnome-terminal --class MPlayer -t FZF --hide-menubar --geometry=120x50 -e "bash -ic %s"'
+
+" Try to run FzfFiles from root of jane repo. If it cannot find a jane root,
+" it gives up and just runs in the current directory.
+" If you want to use fzf, I suggest creating a mapping for this like
+"   nnoremap <leader>f :FzfJane<cr>
+"
+" I also strongly recommend setting up a ~/.agignore, with the contents being the same as our .hgignore
+
+function s:Fzf_files_from_jane_root_fzf(dir)
+  let l:arg = ''
+  if a:dir != ''
+    let l:arg = '--cwd ' . a:dir
+  endif
+
+  call fzf#run(fzf#wrap('hg',
+    \ {'source' : 'bash -c "hg files -S ' . l:arg . ' & hg status -u -n --color never -S ' . l:arg . '"'
+    \ , 'dir': a:dir}))
+endfunction
+
+function! Fzf_files_from_jane_root()
+  if empty($FZF_DEFAULT_COMMAND)
+    let $FZF_DEFAULT_COMMAND='ag -l'
+  endif
+
+  if filereadable('OMakeroot')
+    :call s:Fzf_files_from_jane_root_fzf('')
+  else
+    let dir = getcwd()
+    let fuel = 10
+    while !filereadable(dir . "/OMakeroot") && fuel > 0
+      let fuel -= 1
+      let dir = dir . '/..'
+    endwhile
+    if filereadable(dir . "/OMakeroot")
+      call s:Fzf_files_from_jane_root_fzf(dir)
+    else
+      " give up and just run in the current directory
+      call s:Fzf_files_from_jane_root_fzf('')
+    endif
+  endif
+endfunction
+
+:command! FzfJane :call Fzf_files_from_jane_root() 
+
+" VOoM
+let g:voom_return_key = "<F2>"
+let g:voom_tab_key    = "<S-Tab>"
+
+" easy motion with just leader
+let g:EasyMotion_leader_key = '<Leader>'
+
+if !exists('g:netrw_list_hide')
+  let g:netrw_list_hide=',.*\.cmx$,.*\.d$,.*\.cmt$,.*\.cmti$,.*\.a$,.*\.cmi$,.*\.o$,.*\.deps$,.*\.cmxa$,.*\.libdeps$,.*\.pack-order$,.*\.ml-gen$,.merlin$,.*\.stub.names$,.*\.modules$'
+endif
