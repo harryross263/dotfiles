@@ -1,9 +1,0 @@
-#!/bin/sh
-
-npm install --global wintersmith yo mocha node-inspector jsonpp grunt-cli grunt-init grunt-init-completion bower
-
-# npm install --global bower docco eslint express-generator generator-license generator-node-webkit grunt-cli grunt-init grunt-init-completion jshint jsonpp localtunnel mocha node-inspector npmlist npmtop pygments rimraf static-webserver tern underscore-cli wintersmith yo
-
-npm install --global generator-node-webkit express-generator
-
-# grunt-init: gruntfile gruntplugin license-mit wintersmith-article wintersmith-bootstrap

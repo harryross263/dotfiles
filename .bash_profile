@@ -47,27 +47,12 @@ function mtheme {
     pandoc -t beamer -V theme:metropolis -o $2 $1
 }
 
-# remote connections
-export ECS='harry@barretts.ecs.vuw.ac.nz'
-alias barretts='ssh harry@barretts.ecs.vuw.ac.nz -R localhost:2000:localhost:22'
-alias greta-pt='ssh harry@greta-pt.ecs.vuw.ac.nz -R localhost:2000:localhost:22'
-
 alias powerset='python ~/Documents/scripts/powerset.py'
 
 # system utilities
 alias lock='pmset displaysleepnow'
 
 bind Space:magic-space
-
-# Setting PATH for Python 3.6
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-
-export PATH
-# OPAM configuration
-. /Users/harryross/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-
-# added by Anaconda3 4.3.0 installer
-export PATH="/Users/harryross/anaconda3/bin:$PATH"
 
 # Vim style key bindings on the command line
 set -o vi
@@ -93,27 +78,14 @@ pathadd ~/bin
 pathadd /usr/texbin
 pathadd /Library/usr/texbin
 pathadd /usr/local/texlive/2015/bin/x86_64-darwin
-
-# RPi? Raw git. Have hub (new version of gh)? Use hub Have gh? Use gh. Otherwise, use raw git.
-if ! hash brew 2>/dev/null; then
-	alias git='git'
-elif hash hub 2>/dev/null; then
-	alias git='hub'
-elif hash gh 2>/dev/null; then
-	alias git='gh'
-fi
+pathadd /Library/Frameworks/Python.framework/Versions/3.6/bin # Python 3.6
+pathadd /Users/harryross/anaconda3/bin
 
 function gitignore() { curl http://www.gitignore.io/api/$@ ;}
 
 # tmux
 alias tnew='tmux new -s'
 alias tattach='tmux attach -t'
-
-# bup
-#export BUP_DIR=/Volumes/Misc/bup
-#export BUP_DIR=/Volumes/Shared/People/Josh/ThumbDrives/bup2
-export BUP_DIR=/Users/josh/Documents/ThumbDriveBup
-alias backupThumb='echo JOSHO3; bup index /Volumes/JOSHO3 && bup save -n JOSHO3 /Volumes/JOSHO3/'
 
 # brew completion (don't try without homebrew installed)
 # -f tests for regular file, it is a symlink on OS X, so -e
