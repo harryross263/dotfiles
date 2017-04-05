@@ -1,3 +1,4 @@
 /tmuxomatic/
 .battery.plist
 !bin/**/node_modules
+ssh_authorized_keys
