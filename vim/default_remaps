@@ -16,8 +16,8 @@ call arpeggio#map("n", "", 1, "mw", "<SNR>bufmru")
 call arpeggio#map("n", "", 1, "nm", "<SNR>bufmru")
 
 " fuzzy file finding
-call arpeggio#map("n", "", 0, "ht", "<esc>:FzfJane<cr>")
-call arpeggio#map("n", "", 0, "jk", "<esc>:FzfJane<cr>")
+call arpeggio#map("n", "", 0, "ht", "<esc>:FzfFiles<cr>")
+call arpeggio#map("n", "", 0, "jk", "<esc>:FzfFiles<cr>")
 
 " alternate file jumping
 call arpeggio#map("n", "", 0, "eu", ":call altr#forward()<cr>")
