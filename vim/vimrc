@@ -23,13 +23,10 @@ endif
 if filereadable(glob("~/.vim/overrides"))
   source ~/.vim/overrides
 endif
-" ~/.vimrc for harry@sb
-call pathogen#infect()
-call pathogen#helptags()
 
 " Used to detect mac environment for certain config variables.
 " Usage: 'if s:uname == "Linux"
-let s:uname = substitute(system("uname"), '\n', '', '')
+" let s:uname = substitute(system("uname"), '\n', '', '')
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
