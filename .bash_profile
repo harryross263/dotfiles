@@ -13,6 +13,8 @@ alias tmux='tmux -2'
 alias c='clear'
 alias h='history'
 
+alias vi='vim'
+
 # navigation
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -81,6 +83,7 @@ pathadd /Library/usr/texbin
 pathadd /usr/local/texlive/2015/bin/x86_64-darwin
 pathadd /Library/Frameworks/Python.framework/Versions/3.6/bin # Python 3.6
 pathadd /Users/harryross/anaconda3/bin
+pathadd ~/.cabal/bin
 
 function gitignore() { curl http://www.gitignore.io/api/$@ ;}
 
@@ -107,7 +110,7 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 bind "set completion-ignore-case on"
 
 # promptline (only on OS X with homebrew present)
-test -f ~/.dotfiles/.promptline.sh && hash brew 2>/dev/null && source ~/.dotfiles/.promptline.sh
+test -f ~/.dotfiles/.promptline.sh && source ~/.dotfiles/.promptline.sh
 
 if [ "x$TMUX" != "x" ]; then
 	tmux rename-window $($HR_DIRABBREV) >/dev/null 2>&1
