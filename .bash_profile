@@ -63,16 +63,6 @@ set -o vi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 alias v='vim $(fzf-tmux)'
 
-# Rename the tmux window according to the new directory.
-HR_DIRABBREV=~/.dotfiles/bin/dirabbrev
-
-function cd() {
-	builtin cd "$@"
-	if [ "x$TMUX" != "x" ]; then
-		tmux rename-window $($HR_DIRABBREV) >/dev/null 2>&1
-	fi
-}
-
 # Add an item to $PATH without duplicating it
 pathadd() { if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then PATH="${PATH:+"$PATH:"}$1"; fi }
 
@@ -87,6 +77,7 @@ pathadd ~/.cabal/bin
 function gitignore() { curl http://www.gitignore.io/api/$@ ;}
 
 # tmux
+alias tmux='tmux -2'
 alias tnew='tmux new -s'
 alias tattach='tmux attach -t'
 
@@ -108,9 +99,5 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 # ignore case with completion
 bind "set completion-ignore-case on"
 
-# promptline (only on OS X with homebrew present)
+# promptline
 test -f ~/.dotfiles/.promptline.sh && source ~/.dotfiles/.promptline.sh
-
-if [ "x$TMUX" != "x" ]; then
-	tmux rename-window $($HR_DIRABBREV) >/dev/null 2>&1
-fi
