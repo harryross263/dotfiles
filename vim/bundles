@@ -2,7 +2,10 @@
 
 filetype off
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ce8da1504513612eaabeb0fc8da7c7c3b96401e
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
