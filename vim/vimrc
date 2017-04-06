@@ -13,7 +13,7 @@ source ~/.vim/general
 source ~/.vim/default_remaps
 source ~/.vim/plugin_options
 source ~/.vim/auto_commands
-source ~/.vim/helper_functions
+source ~/.vim/helper_functions 
 
 if isdirectory("/j/office")
   source ~/.vim/jane

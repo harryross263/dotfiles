@@ -7,7 +7,6 @@ call vundle#begin()
 
 " core
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'gmarik/vundle'
 Plugin 'kana/vim-altr'
 Plugin 'tpope/vim-surround'
 Plugin 'phleet/vim-mercenary'
