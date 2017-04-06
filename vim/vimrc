@@ -37,3 +37,17 @@ nnoremap <C-L> :nohl<CR><C-L>
  
 " Use ,b to build the current md file to pdf using pandoc.
 map ,b :w<CR>:Silent pandoc <C-r>=expand("%")<CR> -o <C-r>=expand("%:r") . ".pdf"<CR> --include-in-header ~/.md-preamble.tex --template=md-template.latex<CR>
+
+" Python setup.
+" PEP 8 indentation
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+" Flag bad whitespace
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
