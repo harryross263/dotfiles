@@ -28,8 +28,6 @@ Plugin 'fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'edkolev/promptline.vim'
 Plugin 'edkolev/tmuxline.vim'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
 
 " mode specific
 Plugin 'Jsocaml'
@@ -39,9 +37,7 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'def-lkb/ocp-indent-vim'
 Plugin 'simonjbeaumont/vim-ocamlspot'
 Plugin 'VOoM'
-Plugin 'bgrundmann/mkdtodo'
 Plugin 'JuliaEditorSupport/julia-vim'
-Bundle 'Valloric/YouCompleteMe'
 
 "Makes colors better in 256-color terminals
 if g:experimental 
