@@ -27,16 +27,21 @@ Plugin 'fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'edkolev/promptline.vim'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'tmhedberg/SimpylFold'
 
 " mode specific
-Plugin 'Jsocaml'
-" Plugin 'Markdown'
+" Plugin 'Jsocaml'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'def-lkb/ocp-indent-vim'
 Plugin 'simonjbeaumont/vim-ocamlspot'
 Plugin 'VOoM'
 Plugin 'JuliaEditorSupport/julia-vim'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+let python_highlight_all=1
 
 "Makes colors better in 256-color terminals
 if g:experimental 
