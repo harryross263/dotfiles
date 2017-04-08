@@ -27,7 +27,6 @@ Plugin 'fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'edkolev/promptline.vim'
 Plugin 'edkolev/tmuxline.vim'
-Plugin 'tmhedberg/SimpylFold'
 
 " mode specific
 " Plugin 'Jsocaml'
