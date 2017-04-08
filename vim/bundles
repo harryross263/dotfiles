@@ -39,8 +39,6 @@ Plugin 'VOoM'
 Plugin 'JuliaEditorSupport/julia-vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
 let python_highlight_all=1
 
 "Makes colors better in 256-color terminals
