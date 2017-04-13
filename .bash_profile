@@ -12,6 +12,7 @@ alias tmux='tmux -2'
 # utilities
 alias c='clear'
 alias h='history'
+alias jclean='rm *.class'
 
 alias vi='vim'
 
@@ -102,3 +103,7 @@ bind "set completion-ignore-case on"
 
 # promptline
 test -f ~/.dotfiles/.promptline.sh && source ~/.dotfiles/.promptline.sh
+
+function mark {
+  cd /vol/submit/comp261_2017T1/Assignment$1/$2/
+}
