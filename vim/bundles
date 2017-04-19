@@ -21,9 +21,9 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'arpeggio'
 Plugin 'ervandew/supertab'
 Plugin 'kana/vim-textobj-user'
-Plugin 'vim-dispatch'
+Plugin 'tpope/vim-dispatch'
 Plugin 'AndrewRadev/linediff.vim'
-Plugin 'fzf'
+Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'edkolev/promptline.vim'
 Plugin 'edkolev/tmuxline.vim'
@@ -37,7 +37,6 @@ Plugin 'simonjbeaumont/vim-ocamlspot'
 Plugin 'VOoM'
 Plugin 'JuliaEditorSupport/julia-vim'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
 let python_highlight_all=1
 
 "Makes colors better in 256-color terminals
@@ -56,7 +55,7 @@ Plugin 'Solarized'
 Plugin 'Inkpot'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'chriskempson/base16-vim'
-Plugin 'AnsiEsc'
+Plugin 'vim-scripts/AnsiEsc.vim'
 
 call vundle#end()
 
