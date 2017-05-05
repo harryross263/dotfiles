@@ -26,6 +26,9 @@ alias latp='cd ~/Google\ Drive/latex-projects'
 alias hons='cd ~/Google\ Drive/Vic/honours'
 alias thesis='hons && cd COMP489'
 
+# safety
+alias rm='rm -i'
+
 # display
 alias l='ls'
 alias l.='ls -d .* -G'
@@ -39,7 +42,16 @@ alias pandoc='pandoc --include-in-header ~/.dotfiles/.pandoc_preamble'
 alias path='echo -e ${PATH//:/\\n}'
 
 function mktex {
-    pdflatex $1 && bibtex $2 && pdflatex $1 && pdflatex $1
+    SRC_FILE=$1
+    BIB_FILE=$2
+    
+    OUT_DIR=./tex_output
+    mkdir $OUT_DIR
+    
+    TEX_CMD="pdflatex -output-directory $OUT_DIR"
+    $TEX_CMD $SRC_FILE && bibtex $BIB_FILE && $TEX_CMD $SRC_FILE && $TEX_CMD $SRC_FILE
+   
+    cp $OUT_DIR/*.pdf ./
 }
 
 function mkpandoc {
@@ -107,3 +119,7 @@ test -f ~/.dotfiles/.promptline.sh && source ~/.dotfiles/.promptline.sh
 function mark {
   cd /vol/submit/comp261_2017T1/Assignment$1/$2/
 }
+
+# added by Miniconda3 4.3.11 installer
+export PATH="/Users/harryross/miniconda3/bin:$PATH"
+. /Users/harryross/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
