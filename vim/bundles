@@ -37,7 +37,6 @@ Plugin 'simonjbeaumont/vim-ocamlspot'
 Plugin 'VOoM'
 Plugin 'JuliaEditorSupport/julia-vim'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
 let python_highlight_all=1
 
 "Makes colors better in 256-color terminals
