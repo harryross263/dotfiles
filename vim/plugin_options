@@ -3,7 +3,7 @@
 " vim-airline
 if !has('gui_running') && !has('win32')
 	let g:airline_powerline_fonts=1
-endif
+endif 
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled=1
@@ -66,3 +66,8 @@ endif
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinition<CR>
+
+" vim-pandoc
+let g:pandoc#command#autoexec_on_writes = 1
+let g:pandoc#command#autoexec_command = "Pandoc! pdf --include-in-header ~/.dotfiles/.pandoc_preamble"
+
