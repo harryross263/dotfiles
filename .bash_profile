@@ -123,3 +123,6 @@ function mark {
 # added by Miniconda3 4.3.11 installer
 export PATH="/Users/harryross/miniconda3/bin:$PATH"
 . /Users/harryross/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+# added by Miniconda3 4.3.14 installer
+export PATH="/home/harry/miniconda3/bin:$PATH"
